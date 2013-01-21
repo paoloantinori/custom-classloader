@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <!-- Model Information -->
+  <modelVersion>4.0.0</modelVersion>
+  <!-- Artifact Information -->
+  <groupId>paolo-test</groupId>
+  <artifactId>custom-classloader</artifactId>
+  <version>1.0</version>
+  <packaging>pom</packaging>
+  <name>Custom Classloader  Project</name>
+  <!-- Modules -->
+  <modules>
+    <module>v1</module>
+    <module>v2</module>
+  </modules>
+</project>
