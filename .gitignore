@@ -2,7 +2,8 @@
 .project
 .settings/
 *.class
-
+v1/target/*
+v2/target/*
 # Package Files #
 *.jar
 *.war
