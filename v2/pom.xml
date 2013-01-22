@@ -81,4 +81,5 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+	<name>MyBean :: Version 2</name>
 </project>

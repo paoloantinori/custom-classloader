@@ -13,6 +13,9 @@ import org.junit.Test;
 import paolo.test.custom_classloader.support.MyBean;
 
 public class ClassLoaderTest {
+	
+	public static final String JARS_DIR = System.getProperty("user.dir") + "/src/test/resources";
+			
 
 	@Test
 	public void testLocalClass() throws ClassNotFoundException,
@@ -36,7 +39,7 @@ public class ClassLoaderTest {
 			InvocationTargetException {
 
 		DirectoryBasedParentLastURLClassLoader classLoader = new DirectoryBasedParentLastURLClassLoader(
-				"/data/workspaces/class_loader/custom-classloader/v2/src/test/resources");
+				ClassLoaderTest.JARS_DIR	);
 		Class<?> classManuallyLoaded = classLoader
 				.loadClass("paolo.test.custom_classloader.support.MyBean");
 
@@ -57,7 +60,7 @@ public class ClassLoaderTest {
 		MyBean myBean = new MyBean();
 
 		DirectoryBasedParentLastURLClassLoader classLoader = new DirectoryBasedParentLastURLClassLoader(
-				"/data/workspaces/class_loader/custom-classloader/v2/src/test/resources");
+				JARS_DIR);
 		Class<?> classManuallyLoaded = classLoader
 				.loadClass("paolo.test.custom_classloader.support.MyBean");
 
@@ -73,7 +76,7 @@ public class ClassLoaderTest {
 			InstantiationException, IllegalAccessException {
 
 		DirectoryBasedParentLastURLClassLoader classLoader = new DirectoryBasedParentLastURLClassLoader(
-				"/data/workspaces/class_loader/custom-classloader/v2/src/test/resources");
+				JARS_DIR);
 		Class<?> classManuallyLoaded = classLoader
 				.loadClass("paolo.test.custom_classloader.support.MyBean");
 
@@ -94,7 +97,7 @@ public class ClassLoaderTest {
 			InvocationTargetException {
 
 		DirectoryBasedParentLastURLClassLoader classLoader = new DirectoryBasedParentLastURLClassLoader(
-				"/data/workspaces/class_loader/custom-classloader/v2/src/test/resources");
+				JARS_DIR);
 		Class<?> classManuallyLoaded = classLoader
 				.loadClass("paolo.test.custom_classloader.support.MyBean");
 
