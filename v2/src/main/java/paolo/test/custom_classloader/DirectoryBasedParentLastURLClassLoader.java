@@ -16,7 +16,7 @@ public class DirectoryBasedParentLastURLClassLoader extends ClassLoader {
 	/**
 	 * This class enables calling of findClass on a classloader
 	 */
-	private static class FindClassClassLoader extends ClassLoader {
+	private class FindClassClassLoader extends ClassLoader {
 		public FindClassClassLoader(ClassLoader parent) {
 			super(parent);
 		}
@@ -32,7 +32,7 @@ public class DirectoryBasedParentLastURLClassLoader extends ClassLoader {
 	 * URLClassLoader. Need this because findClass is protected in
 	 * URLClassLoader
 	 */
-	private static class ChildURLClassLoader extends URLClassLoader {
+	private class ChildURLClassLoader extends URLClassLoader {
 		private FindClassClassLoader realParent;
 
 		public ChildURLClassLoader(URL[] urls, FindClassClassLoader realParent) {
