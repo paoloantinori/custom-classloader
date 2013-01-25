@@ -14,29 +14,16 @@ public class DirectoryBasedParentLastURLClassLoader extends ClassLoader {
 	private ChildURLClassLoader childClassLoader;
 
 	/**
-	 * This class enables calling of findClass on a classloader
-	 */
-	private class FindClassClassLoader extends ClassLoader {
-		public FindClassClassLoader(ClassLoader parent) {
-			super(parent);
-		}
-
-		@Override
-		public Class<?> findClass(String name) throws ClassNotFoundException {
-			return super.findClass(name);
-		}
-	}
-
-	/**
 	 * This class delegates (child then parent) for the findClass method for a
 	 * URLClassLoader. Need this because findClass is protected in
 	 * URLClassLoader
 	 */
 	private class ChildURLClassLoader extends URLClassLoader {
-		private FindClassClassLoader realParent;
+		private ClassLoader realParent;
 
-		public ChildURLClassLoader(URL[] urls, FindClassClassLoader realParent) {
-			// pass null as parent so upward delegation disabled for first findClass call
+		public ChildURLClassLoader(URL[] urls, ClassLoader realParent) {
+			// pass null as parent so upward delegation disabled for first
+			// findClass call
 			super(urls, null);
 
 			this.realParent = realParent;
@@ -76,17 +63,17 @@ public class DirectoryBasedParentLastURLClassLoader extends ClassLoader {
 				try {
 					urls[i] = jarFiles[i].toURI().toURL();
 				} catch (MalformedURLException e) {
-					throw new RuntimeException("Could not get URL for JAR file: " + jarFiles[i], e);
+					throw new RuntimeException(
+							"Could not get URL for JAR file: " + jarFiles[i], e);
 				}
 			}
-			
+
 		} else {
 			// no JAR files found
 			urls = new URL[0];
 		}
-		
-		childClassLoader = new ChildURLClassLoader(urls,
-				new FindClassClassLoader(this.getParent()));
+
+		childClassLoader = new ChildURLClassLoader(urls, this.getParent());
 	}
 
 	@Override

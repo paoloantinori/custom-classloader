@@ -4,6 +4,7 @@
 *.class
 v1/target/*
 v2/target/*
+v2/test-output/*
 # Package Files #
 *.jar
 *.war
